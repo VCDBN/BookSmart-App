@@ -1,1 +1,9 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/c_svanJl)
+# BookSmart
+![NET6](https://img.shields.io/badge/.NET-6.0-yellow)  ![VS](https://img.shields.io/badge/Visual_Studio_Community_2022-17.7.4-purple)    
+BookSmart is an educational tool/ training software for novice librarians.
+
+## Compilation
+Clone this repository in Visual Studio and invoke the .sln.  
+```
+https://github.com/VCDBN/prog7312-part-1-MrMatrix2108.git
+```
