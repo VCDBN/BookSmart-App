@@ -16,7 +16,7 @@ Clone this repository in Visual Studio and invoke the .sln.
 https://github.com/VCDBN/prog7312-part-1-MrMatrix2108.git
 ```
 
-## 🌟Special thanks
+## 🌟 Special thanks
 
 Big thanks to the creators of XAML Styler ❤️
 
