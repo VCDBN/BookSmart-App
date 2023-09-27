@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zFdzEaPshKJ22Ddw4sOyXzIru7b3sHT0foJlNbbOgroLUCRTw3tIDTMOVDLdplGsaDGVphsRl+yPuLfxwMGGHw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\USER\\source\\repos\\BookSmart\\BookSmart\\BookSmart.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\gong-wpf-dragdrop\\3.2.1\\gong-wpf-dragdrop.3.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}

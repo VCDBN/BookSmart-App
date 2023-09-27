@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="BookSmart.Pages.MenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BookSmart.Pages"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Menu"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    Background="#191919"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <!--  Custom Button Style  -->
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Name="border"
+                            Background="#303030"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#505050" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Label
+            Name="lblMenuTitle"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Content="BookSmart"
+            FontSize="40"
+            FontWeight="DemiBold"
+            Foreground="White" />
+        <StackPanel
+            x:Name="stackPanelOptions"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="btnReplacingBooks"
+                Click="btnReplacingBooks_Click"
+                Content="Replacing Books" />
+            <Button
+                x:Name="btnIdentifyingAreas"
+                Click="btnIdentifyingAreas_Click"
+                Content="Identifying Areas" />
+            <Button
+                x:Name="btnFindingCallNumbers"
+                Click="btnFindingCallNumbers_Click"
+                Content="Finding Call Numbers" />
+        </StackPanel>
+        <Label
+            Name="lblAbout"
+            Margin="5,0,10,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Content="© Jishen Harilal | version 26.09.2023"
+            FontSize="10"
+            FontWeight="SemiBold"
+            Foreground="Gray" />
+    </Grid>
+</Page>
