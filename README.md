@@ -1,5 +1,5 @@
 # 📖 BookSmart
-![NET6](https://img.shields.io/badge/.NET-6.0-yellow)  ![VS](https://img.shields.io/badge/Visual_Studio_Community_2022-17.7.4-purple)  
+![NET6](https://img.shields.io/badge/.NET-6.0-yellow)  ![VS](https://img.shields.io/badge/Visual_Studio_Community_2022-v17.7.4-purple)  
 Created by Jishen Harilal,  
 `BookSmart` is a fun, easy to use educational tool/training software for novice librarians.  
 
