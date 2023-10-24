@@ -25,7 +25,13 @@ namespace BookSmart.Pages
         //Game not yet implemented.
         private void btnIdentifyingAreas_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Coming Soon", "Identifying Areas", MessageBoxButton.OK, MessageBoxImage.Information);
+            Window mainWindow = Application.Current.MainWindow;
+            Frame mainFrame = (Frame)mainWindow.FindName("mainFrame");
+
+            if (mainFrame != null)
+            {
+                mainFrame.Navigate(new IdentifyingAreasPage());
+            }
         }
 
         //Game not yet implemented.
