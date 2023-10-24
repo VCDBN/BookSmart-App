@@ -6,14 +6,21 @@ Created by Jishen Harilal,
 ## About
 BookSmart is a `C#` `WPF` application built using Visual Studio 
 
-The app currently includes the first of 3 games. `Replacing Books` is a game that tests the player's speed and efficiency when tasked with sorting books using their call numbers.  
+The app currently includes the first 2 out of 3 games.  
+##### Game #1 - Replacing Books
+`Replacing Books` is a game that tests the player's speed and efficiency when tasked with sorting books using their call numbers.  
 
-More games are to be implemented in the future, along with various UI improvements.
+##### Game #2 - Identifying Areas
+`Identifying Areas` is a newly added game all about matching call numbers to their descriptions and vice-versa, testing the player's knowledge of the Dewey Decimal System's general areas.  
+
+##### Game #3 - Finding Call Numbers
+`Finding Call Numbers` _**- COMING SOON!**_
 
 ## 💻 Compilation
 Clone this repository in Visual Studio and invoke the .sln.  
+
 ```
-https://github.com/VCDBN/prog7312-part-1-MrMatrix2108.git
+https://github.com/VCDBN/prog7312-part-2-MrMatrix2108.git
 ```
 
 ## 🌟 Special thanks
