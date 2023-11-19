@@ -1,6 +1,6 @@
 ﻿namespace BookSmart
 {
-    public class Tree<T>
+    public class Tree<T> //Represents generic tree structure with a root node.
     {
         public TreeNode<T> Root { get; set; }
 

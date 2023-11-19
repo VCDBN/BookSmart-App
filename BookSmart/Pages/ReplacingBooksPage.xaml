@@ -13,164 +13,164 @@
     Background="#191919"
     mc:Ignorable="d">
 
-<Page.Resources>
-<!--  Custom Button Style  -->
-<Style TargetType="{x:Type Button}">
-<Setter Property="Foreground" Value="White" />
-<Setter Property="Width" Value="150" />
-<Setter Property="Height" Value="35" />
-<Setter Property="Margin" Value="10" />
-<Setter Property="BorderThickness" Value="1" />
-<Setter Property="FontFamily" Value="Segoe UI" />
-<Setter Property="FontSize" Value="14" />
-<Setter Property="FontWeight" Value="Regular" />
-<Setter Property="Template">
-    <Setter.Value>
-        <ControlTemplate TargetType="{x:Type Button}">
-            <Border
-                x:Name="border"
-                Background="#303030"
-                CornerRadius="5">
-                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-            </Border>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter TargetName="border" Property="Background" Value="#505050" />
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-    </Setter.Value>
-</Setter>
-</Style>
+    <Page.Resources>
+        <!--  Custom Button Style  -->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            x:Name="border"
+                            Background="#303030"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#505050" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-<!--  Custom TextBox Style  -->
-<Style x:Key="CustomTextBoxStyle" TargetType="{x:Type TextBlock}">
-<Setter Property="Foreground" Value="White" />
-<Setter Property="FontFamily" Value="Segoe UI" />
-<Setter Property="FontSize" Value="20" />
-<Setter Property="FontWeight" Value="Regular" />
-<Setter Property="Padding" Value="10" />
-<Setter Property="Margin" Value="0" />
-<Setter Property="TextAlignment" Value="Left" />
-<Setter Property="Width" Value="150" />
-<Setter Property="HorizontalAlignment" Value="Left" />
-<Setter Property="VerticalAlignment" Value="Center" />
-</Style>
-</Page.Resources>
+        <!--  Custom TextBox Style  -->
+        <Style x:Key="CustomTextBoxStyle" TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Regular" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="TextAlignment" Value="Left" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
 
-<Grid>
-<StackPanel
-HorizontalAlignment="Center"
-VerticalAlignment="Center"
-Orientation="Horizontal">
-<StackPanel
-    Margin="0,0,120,0"
-    HorizontalAlignment="Left"
-    VerticalAlignment="Top"
-    Orientation="Vertical">
-    <Label
-        Name="lblReplacingBooksPageTitle"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Top"
-        Content="Replacing Books"
-        FontSize="30"
-        FontWeight="DemiBold"
-        Foreground="White" />
-    <TextBlock
-        Name="lblInfo"
-        Width="260"
-        Margin="10,30,0,20"
-        HorizontalAlignment="Left"
-        Foreground="White"
-        Text="Loading..."
-        TextAlignment="Left"
-        TextWrapping="Wrap" />
-    <Button
-        Name="btnExit"
-        HorizontalAlignment="Left"
-        Click="BtnExit_Click"
-        Content="Back to Menu" />
-</StackPanel>
-
-<StackPanel
-    HorizontalAlignment="Right"
-    VerticalAlignment="Center"
-    Orientation="Horizontal">
-    <ProgressBar
-        x:Name="pbRemainingTime"
-        Width="5"
-        Height="240"
-        VerticalAlignment="Center"
-        Background="#191919"
-        Foreground="LimeGreen"
-        Maximum="60"
-        Orientation="Vertical"
-        Value="60">
-        <ProgressBar.LayoutTransform>
-            <ScaleTransform ScaleY="1" />
-        </ProgressBar.LayoutTransform>
-    </ProgressBar>
-
-    <StackPanel
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Orientation="Vertical">
-        <TextBlock
-            x:Name="tbTimer"
-            Margin="0,10,0,10"
-            FontSize="30"
-            Foreground="LimeGreen"
-            Text="01:00"
-            TextAlignment="Center" />
-        <ListBox
-            x:Name="lbCallNumbers"
-            Width="150"
-            Height="260"
+    <Grid>
+        <StackPanel
             HorizontalAlignment="Center"
-            dd:DragDrop.DropHandler="{Binding}"
-            dd:DragDrop.IsDragSource="True"
-            dd:DragDrop.IsDropTarget="True"
-            Background="#191919"
-            BorderBrush="Gray"
-            BorderThickness="2"
-            FontSize="16"
-            Foreground="White"
-            ItemsSource="{Binding CallNumbers}">
-            <ListBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="10" />
-                </Style>
-            </ListBox.Resources>
-        </ListBox>
-        <Button
-            x:Name="btnSubmit"
-            HorizontalAlignment="Left"
-            Click="BtnSubmit_Click"
-            Content="Submit"
-            IsEnabled="false" />
-    </StackPanel>
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <StackPanel
+                Margin="0,0,120,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Orientation="Vertical">
+                <Label
+                    Name="lblReplacingBooksPageTitle"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Content="Replacing Books"
+                    FontSize="30"
+                    FontWeight="DemiBold"
+                    Foreground="White" />
+                <TextBlock
+                    Name="lblInfo"
+                    Width="260"
+                    Margin="10,30,0,20"
+                    HorizontalAlignment="Left"
+                    Foreground="White"
+                    Text="Loading..."
+                    TextAlignment="Left"
+                    TextWrapping="Wrap" />
+                <Button
+                    Name="btnExit"
+                    HorizontalAlignment="Left"
+                    Click="BtnExit_Click"
+                    Content="Back to Menu" />
+            </StackPanel>
 
-    <StackPanel
-        Margin="20,0,0,0"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Orientation="Vertical">
-        <Button
-            x:Name="btnStart"
-            HorizontalAlignment="Left"
-            Click="BtnStart_Click"
-            Content="New Game" />
-        <TextBlock
-            x:Name="tbNumSolved"
-            Style="{StaticResource CustomTextBoxStyle}"
-            Text="Solved: 0" />
-        <TextBlock
-            x:Name="tbScore"
-            Style="{StaticResource CustomTextBoxStyle}"
-            Text="Score: 0" />
-    </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <ProgressBar
+                    x:Name="pbRemainingTime"
+                    Width="5"
+                    Height="240"
+                    VerticalAlignment="Center"
+                    Background="#191919"
+                    Foreground="LimeGreen"
+                    Maximum="60"
+                    Orientation="Vertical"
+                    Value="60">
+                    <ProgressBar.LayoutTransform>
+                        <ScaleTransform ScaleY="1" />
+                    </ProgressBar.LayoutTransform>
+                </ProgressBar>
 
-</StackPanel>
-</StackPanel>
-</Grid>
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <TextBlock
+                        x:Name="tbTimer"
+                        Margin="0,10,0,10"
+                        FontSize="30"
+                        Foreground="LimeGreen"
+                        Text="01:00"
+                        TextAlignment="Center" />
+                    <ListBox
+                        x:Name="lbCallNumbers"
+                        Width="150"
+                        Height="260"
+                        HorizontalAlignment="Center"
+                        dd:DragDrop.DropHandler="{Binding}"
+                        dd:DragDrop.IsDragSource="True"
+                        dd:DragDrop.IsDropTarget="True"
+                        Background="#191919"
+                        BorderBrush="Gray"
+                        BorderThickness="2"
+                        FontSize="16"
+                        Foreground="White"
+                        ItemsSource="{Binding CallNumbers}">
+                        <ListBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10" />
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                    <Button
+                        x:Name="btnSubmit"
+                        HorizontalAlignment="Left"
+                        Click="BtnSubmit_Click"
+                        Content="Submit"
+                        IsEnabled="false" />
+                </StackPanel>
+
+                <StackPanel
+                    Margin="20,0,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical">
+                    <Button
+                        x:Name="btnStart"
+                        HorizontalAlignment="Left"
+                        Click="BtnStart_Click"
+                        Content="New Game" />
+                    <TextBlock
+                        x:Name="tbNumSolved"
+                        Style="{StaticResource CustomTextBoxStyle}"
+                        Text="Solved: 0" />
+                    <TextBlock
+                        x:Name="tbScore"
+                        Style="{StaticResource CustomTextBoxStyle}"
+                        Text="Score: 0" />
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
 </Page>

@@ -59,24 +59,35 @@
         <Button
             x:Name="btnNewGame"
             Width="150"
+            Height="35"
             Margin="619,366,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Click="btnNewGame_Click"
-            Content="New Game" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            Content="New Game" />
         <Button
             x:Name="btnSubmit"
+            Height="35"
             Margin="424,366,0,0"
             HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Click="BtnSubmit_Click"
-            Content="Submit" Height="35" VerticalAlignment="Top" IsEnabled="False" />
+            Content="Submit"
+            IsEnabled="False" />
         <ListBox
             x:Name="lbOne"
+            Width="60"
+            Height="130"
             Margin="424,18,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="#191919"
             BorderBrush="Gray"
             BorderThickness="2"
+            FontFamily="Lucida Sans Typewriter"
             FontSize="11"
             Foreground="White"
-            ItemsSource="{Binding Table1}" Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="60" FontFamily="Lucida Sans Typewriter">
+            ItemsSource="{Binding Table1}">
             <ListBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
@@ -85,20 +96,31 @@
         </ListBox>
         <ListBox
             x:Name="lbTwo"
+            Width="273"
+            Height="130"
             Margin="496,18,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
             Background="#191919"
             BorderBrush="Gray"
             BorderThickness="2"
+            FontFamily="Lucida Sans Typewriter"
             FontSize="11"
             Foreground="White"
-            ItemsSource="{Binding Table2}" Height="130" VerticalAlignment="Top" HorizontalAlignment="Left" Width="273" FontFamily="Lucida Sans Typewriter">
+            ItemsSource="{Binding Table2}">
             <ListBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10" />
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        <StackPanel Margin="10,10,0,0" Orientation="Vertical" HorizontalAlignment="Left" Width="270" Height="430" VerticalAlignment="Top">
+        <StackPanel
+            Width="270"
+            Height="430"
+            Margin="10,10,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Orientation="Vertical">
             <Label
                 x:Name="lblIdentifyingAreasPageTitle"
                 HorizontalAlignment="Left"
@@ -122,19 +144,131 @@
                 Click="BtnExit_Click"
                 Content="Back to Menu" />
         </StackPanel>
-        <Label x:Name="lbl1" Content="1:" Margin="424,176,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16" HorizontalAlignment="Left" Width="22"/>
-        <ComboBox x:Name="cmb1" Margin="454,178,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45" FontSize="14" BorderBrush="{x:Null}"/>
-        <Label x:Name="lbl2" Content="2:" HorizontalAlignment="Left" Margin="424,218,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
-        <ComboBox x:Name="cmb2" Margin="454,219,0,0" HorizontalAlignment="Left" Width="45" Height="28" VerticalAlignment="Top"/>
-        <Label x:Name="lbl3" Content="3:" HorizontalAlignment="Left" Margin="424,259,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
-        <ComboBox x:Name="cmb3" Margin="454,261,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="45"/>
-        <Label x:Name="lbl4" Content="4:" HorizontalAlignment="Left" Margin="424,300,0,0" VerticalAlignment="Top" Foreground="White" FontSize="16"/>
-        <ComboBox x:Name="cmb4" Margin="454,302,0,0" HorizontalAlignment="Left" Width="45" Height="28" VerticalAlignment="Top"/>
-        <Label x:Name="lblStreakText" Content="Highest Streak" HorizontalAlignment="Left" Margin="504,178,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" RenderTransformOrigin="0.566,-0.694" Width="265" HorizontalContentAlignment="Center"/>
-        <Label x:Name="lblStreak" Content="0" HorizontalAlignment="Left" Margin="504,218,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" RenderTransformOrigin="0.566,-0.694" Width="265" HorizontalContentAlignment="Center"/>
-        <ProgressBar x:Name="pbRemainingTime" HorizontalAlignment="Left" Height="10" Margin="426,153,0,0" VerticalAlignment="Top" Width="343" Maximum="40" Value="60"/>
-        <Label x:Name="lblResult" Content="" HorizontalAlignment="Left" Margin="424,336,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.566,-0.694" Width="148" HorizontalContentAlignment="Center"/>
-        <Label x:Name="lblCurrentStreakText" Content="Current Streak" HorizontalAlignment="Left" Margin="504,275,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.566,-0.694" Width="265" HorizontalContentAlignment="Center"/>
-        <Label x:Name="lblCurrentStreak" Content="0" HorizontalAlignment="Left" Margin="504,302,0,0" VerticalAlignment="Top" FontSize="14" Foreground="White" RenderTransformOrigin="0.566,-0.694" Width="265" HorizontalContentAlignment="Center"/>
+        <Label
+            x:Name="lbl1"
+            Width="22"
+            Margin="424,176,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="1:"
+            FontSize="16"
+            Foreground="White" />
+        <ComboBox
+            x:Name="cmb1"
+            Width="45"
+            Height="28"
+            Margin="454,178,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            BorderBrush="{x:Null}"
+            FontSize="14" />
+        <Label
+            x:Name="lbl2"
+            Margin="424,218,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="2:"
+            FontSize="16"
+            Foreground="White" />
+        <ComboBox
+            x:Name="cmb2"
+            Width="45"
+            Height="28"
+            Margin="454,219,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" />
+        <Label
+            x:Name="lbl3"
+            Margin="424,259,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="3:"
+            FontSize="16"
+            Foreground="White" />
+        <ComboBox
+            x:Name="cmb3"
+            Width="45"
+            Height="28"
+            Margin="454,261,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" />
+        <Label
+            x:Name="lbl4"
+            Margin="424,300,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="4:"
+            FontSize="16"
+            Foreground="White" />
+        <ComboBox
+            x:Name="cmb4"
+            Width="45"
+            Height="28"
+            Margin="454,302,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" />
+        <Label
+            x:Name="lblStreakText"
+            Width="265"
+            Margin="504,178,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Content="Highest Streak"
+            FontSize="20"
+            Foreground="White"
+            RenderTransformOrigin="0.566,-0.694" />
+        <Label
+            x:Name="lblStreak"
+            Width="265"
+            Margin="504,218,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Content="0"
+            FontSize="20"
+            Foreground="White"
+            RenderTransformOrigin="0.566,-0.694" />
+        <ProgressBar
+            x:Name="pbRemainingTime"
+            Width="343"
+            Height="10"
+            Margin="426,153,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Maximum="40"
+            Value="60" />
+        <Label
+            x:Name="lblResult"
+            Width="148"
+            Margin="424,336,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Content=""
+            Foreground="White"
+            RenderTransformOrigin="0.566,-0.694" />
+        <Label
+            x:Name="lblCurrentStreakText"
+            Width="265"
+            Margin="504,275,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Content="Current Streak"
+            FontSize="14"
+            Foreground="White"
+            RenderTransformOrigin="0.566,-0.694" />
+        <Label
+            x:Name="lblCurrentStreak"
+            Width="265"
+            Margin="504,302,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            Content="0"
+            FontSize="14"
+            Foreground="White"
+            RenderTransformOrigin="0.566,-0.694" />
     </Grid>
 </Page>

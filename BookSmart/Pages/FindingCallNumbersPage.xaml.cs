@@ -19,18 +19,20 @@ namespace BookSmart.Pages
         TimeSpan remainingTime;
         DispatcherTimer? timer;
         public static bool quiz1 = false;
-
-        const int QUIZ_LENGTH = 30;    //length of game in seconds
-        const int TIER1_REWARD = 5;    //points reward for correct tier 1 choice
-        const int TIER2_REWARD = 10;   //points reward for correct tier 2 choice
-        const int PENALTY = 5;         //point penalty for any incorrect choice
-  
-        private Brush redBrush = new SolidColorBrush(Colors.Red);
-        private Brush orangeBrush = new SolidColorBrush(Colors.Orange);
-        private Brush yellowGreenBrush = new SolidColorBrush(Colors.Yellow);
-        private Brush greenBrush = new SolidColorBrush(Colors.LimeGreen);
-
         public Tree<string> DeweyTree = MakeDeweyTree();
+
+        //Can be adjusted for differing levels of difficulty
+        const int QUIZ_LENGTH  = 30;    //length of game in seconds
+        const int TIER1_REWARD = 5;     //points reward for correct tier 1 choice
+        const int TIER2_REWARD = 10;    //points reward for correct tier 2 choice
+        const int PENALTY      = 5;     //point penalty for any incorrect choice
+  
+        //Colours for progress bar
+        private Brush redBrush    = new SolidColorBrush(Colors.Red);
+        private Brush orangeBrush = new SolidColorBrush(Colors.Orange);
+        private Brush yellowBrush = new SolidColorBrush(Colors.Yellow);
+        private Brush greenBrush  = new SolidColorBrush(Colors.LimeGreen);
+
         public static List<string> OrderedOptions1 = new List<string>();    //Tier 1 quiz options
         public static List<string> OrderedOptions2 = new List<string>();    //Tier 2 quiz options
 
@@ -38,10 +40,10 @@ namespace BookSmart.Pages
         public static string answer2  = string.Empty;    //Tier 2 answer
         public static string question = string.Empty;    //Tier 3 Description
 
-        public static int tier1Score = 0;
-        public static int tier2Score = 0;
-        public static int totalpenalty = 0;
-        public static int totalScore = 0;
+        public static int tier1Score    = 0;    //Score for the tier 1 questions
+        public static int tier2Score    = 0;    //Score for the tier 2 questions
+        public static int totalpenalty  = 0;    //Accumulated penalty for incorrect answers
+        public static int totalScore    = 0;    //Total score = [tier1Score + tier2Score - totalPenalty]
 
         public FindingCallNumbersPage()
         {
@@ -55,6 +57,61 @@ namespace BookSmart.Pages
                 $"- Correct Tier 1 answer: +{TIER1_REWARD} pts.\n" +
                 $"- Correct Tier 2 answer: +{TIER2_REWARD} pts.\n" +
                 $"- Incorrect answer: -{PENALTY} pts";
+        }
+
+        private void btnNewGame_Click(object sender, RoutedEventArgs e) //Starts a brand new game
+        {
+
+            tier1Score = 0;
+            tier2Score = 0;
+            totalpenalty = 0;
+            totalScore = 0;
+
+            btnNewGame.IsEnabled = false;
+            btnOpt1.IsEnabled = true;
+            btnOpt2.IsEnabled = true;
+            btnOpt3.IsEnabled = true;
+            btnOpt4.IsEnabled = true;
+
+            SetNewQuiz(DeweyTree);
+            StartQuiz1();
+            NewTimer();
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e) //Leave the game (Navigate back to menu)
+        {
+            Window mainWindow = Application.Current.MainWindow;
+            Frame mainFrame = (Frame)mainWindow.FindName("mainFrame");
+
+            if (timer != null)
+            {
+                timer.Stop(); //Timer is stopped
+            }
+
+            if (mainFrame != null)
+            {
+                mainFrame.Navigate(new MenuPage()); //Navigation to menu page
+            }
+        }
+
+        private void btnOpt1_Click(object sender, RoutedEventArgs e) //Quiz Option 1
+        {
+            EvaluateAnswer(btnOpt1.Content.ToString()!);
+        }
+
+        private void btnOpt2_Click(object sender, RoutedEventArgs e) //Quiz Option 2
+        {
+            EvaluateAnswer(btnOpt2.Content.ToString()!);
+        }
+
+        private void btnOpt3_Click(object sender, RoutedEventArgs e) //Quiz Option 3
+        {
+            EvaluateAnswer(btnOpt3.Content.ToString()!);
+        }
+
+        private void btnOpt4_Click(object sender, RoutedEventArgs e) //Quiz Option 4
+        {
+            EvaluateAnswer(btnOpt4.Content.ToString()!);
         }
 
         public static void SetNewQuiz(Tree<string> DeweyTree) //New question and sets of options (level 1 and 2)
@@ -106,12 +163,16 @@ namespace BookSmart.Pages
         public static Tree<string> MakeDeweyTree() //Returns a tree with dewey data loaded from textfile
         {
             Tree<string> tree = new("Dewey Decimal Tree 000-999");
-           
+
             //Textfile is stored in the same folder as the executable
-            //Gets the executable directory
+
+            //Get the executable directory
+            //https://www.c-sharpcorner.com/UploadFile/370e35/basedirectory-vs-currentdirectory-in-C-Sharp/
             string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
             //Path of the textfile
             string relativePath = "DeweyData.txt";
+
             //Combine the two paths and get the full path to the textfile
             string fullPath = Path.Combine(baseDirectory, relativePath);
 
@@ -201,7 +262,7 @@ namespace BookSmart.Pages
             }
         }
 
-        static int GetNumberPart(string input)
+        static int GetNumberPart(string input) //Gets the call number part of the dewey category
         {
             //https://stackoverflow.com/questions/59220804/extract-number-from-string-value
 
@@ -209,7 +270,7 @@ namespace BookSmart.Pages
             return int.Parse(numericPart);
         }
 
-        private void EvaluateAnswer(string selectedAns) //Checks if the selected quiz answer is correct
+        private void EvaluateAnswer(string selectedAns) //Handles checking correct and incorrect answers and updating score accordingly
         {
             string correctAns;
 
@@ -250,31 +311,12 @@ namespace BookSmart.Pages
             UpdateScoreboard();
         }
 
-        private void UpdateScoreboard()
+        private void UpdateScoreboard() //Update the score readout
         {
             lblScore.Content = $"Score: {totalScore}";
         }
 
-        private void btnNewGame_Click(object sender, RoutedEventArgs e)
-        {
-
-            tier1Score = 0;
-            tier2Score = 0;
-            totalpenalty = 0;
-            totalScore = 0;
-
-            btnNewGame.IsEnabled = false;
-            btnOpt1.IsEnabled = true;
-            btnOpt2.IsEnabled = true;
-            btnOpt3.IsEnabled = true;
-            btnOpt4.IsEnabled = true;
-
-            SetNewQuiz(DeweyTree);
-            StartQuiz1();
-            NewTimer();
-        }
-
-        private void StartQuiz1()
+        private void StartQuiz1() //Starts the tier 1 quiz that has been set
         {
             //The first level quiz
             quiz1 = true;
@@ -287,7 +329,7 @@ namespace BookSmart.Pages
             btnOpt4.Content = OrderedOptions1[3];
         }
 
-        private void StartQuiz2()
+        private void StartQuiz2() //Starts the tier 2 quiz that has been set
         {
             //not the first level quiz
             quiz1 = false;
@@ -298,42 +340,6 @@ namespace BookSmart.Pages
             btnOpt2.Content = OrderedOptions2[1];
             btnOpt3.Content = OrderedOptions2[2];
             btnOpt4.Content = OrderedOptions2[3];
-        }
-
-        private void BtnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Window mainWindow = Application.Current.MainWindow;
-            Frame mainFrame = (Frame)mainWindow.FindName("mainFrame");
-
-            if (timer != null)
-            {
-                timer.Stop(); //Timer is stopped
-            }
-
-            if (mainFrame != null)
-            {
-                mainFrame.Navigate(new MenuPage()); //Navigation to menu page
-            }
-        }
-
-        private void btnOpt1_Click(object sender, RoutedEventArgs e)
-        {
-            EvaluateAnswer(btnOpt1.Content.ToString()!);
-        }
-
-        private void btnOpt2_Click(object sender, RoutedEventArgs e)
-        {
-            EvaluateAnswer(btnOpt2.Content.ToString()!);
-        }
-
-        private void btnOpt3_Click(object sender, RoutedEventArgs e)
-        {
-            EvaluateAnswer(btnOpt3.Content.ToString()!);
-        }
-
-        private void btnOpt4_Click(object sender, RoutedEventArgs e)
-        {
-            EvaluateAnswer(btnOpt4.Content.ToString()!);
         }
 
         private void NewTimer() //Creates a new game timer
@@ -353,7 +359,7 @@ namespace BookSmart.Pages
             UpdateGameTimer();
         }
 
-        private void UpdateGameTimer()
+        private void UpdateGameTimer() //Updates the UI readout of the game timer
         {
             pbRemainingTime.Value = remainingTime.TotalSeconds;
             lblTime.Content = $"Time: {remainingTime.TotalSeconds}";
@@ -370,16 +376,15 @@ namespace BookSmart.Pages
                     pbRemainingTime.Foreground = orangeBrush;
                     break;
                 case <= totalTime * 2/3:
-                    pbRemainingTime.Foreground = yellowGreenBrush;
+                    pbRemainingTime.Foreground = yellowBrush;
                     break;
                 case <= totalTime:
                     pbRemainingTime.Foreground = greenBrush;
                     break;
-
             }
         }
 
-        private void EndGame()
+        private void EndGame() //Stops the game and displays the player's score
         {
             if (timer != null)
             {
@@ -408,7 +413,7 @@ namespace BookSmart.Pages
             SetOpeningState();
         }
 
-        private void SetOpeningState()
+        private void SetOpeningState() //Resets the UI components to their original state
         {
             btnNewGame.IsEnabled = true;
             btnOpt1.IsEnabled = false;
@@ -428,7 +433,7 @@ namespace BookSmart.Pages
             btnOpt4.Content = string.Empty;
         }
 
-        private async void DisplaySuccess()
+        private async void DisplaySuccess() //Signals to the user that they selected the correct option
         {
             SolidColorBrush greenBrush = new SolidColorBrush(Colors.Lime);
             lblResult.Foreground = greenBrush;
@@ -445,7 +450,7 @@ namespace BookSmart.Pages
             lblResult.Content = " ";
         }
 
-        private async void DisplayFailure()
+        private async void DisplayFailure() //Signals to the user that they selected the incorrect option
         {
             SolidColorBrush redBrush = new SolidColorBrush(Colors.Red);
             lblResult.Foreground = redBrush;

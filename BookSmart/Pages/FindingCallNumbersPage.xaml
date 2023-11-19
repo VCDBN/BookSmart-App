@@ -42,7 +42,7 @@
 
         <Style x:Key="left" TargetType="{x:Type Button}">
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Margin" Value="0 5 0 5" />
+            <Setter Property="Margin" Value="0,5,0,5" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="FontFamily" Value="Segoe UI" />
             <Setter Property="FontSize" Value="14" />
@@ -51,10 +51,13 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border
-                    x:Name="border"
-                    Background="#303030"
-                    CornerRadius="3">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15 0 0 0" />
+                            x:Name="border"
+                            Background="#303030"
+                            CornerRadius="3">
+                            <ContentPresenter
+                                Margin="15,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
@@ -84,14 +87,14 @@
     <Grid x:Name="gridFindCallNums">
         <Button
             x:Name="btnNewGame"
-            Style="{StaticResource centered}"
             Width="150"
             Height="35"
             Margin="470,350,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Click="btnNewGame_Click"
-            Content="New Game" />
+            Content="New Game"
+            Style="{StaticResource centered}" />
 
         <StackPanel
             Width="308"
@@ -119,10 +122,10 @@
                 TextWrapping="Wrap" />
             <Button
                 x:Name="btnExit"
-                Style="{StaticResource centered}"
                 HorizontalAlignment="Left"
                 Click="BtnExit_Click"
-                Content="Back to Menu" />
+                Content="Back to Menu"
+                Style="{StaticResource centered}" />
         </StackPanel>
         <Label
             x:Name="lblQuestion"
@@ -130,10 +133,10 @@
             Margin="344,80,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            FontStyle="Italic"
             HorizontalContentAlignment="Center"
             Content="Click 'New Game' to Begin"
             FontSize="16"
+            FontStyle="Italic"
             Foreground="White" />
         <ProgressBar
             x:Name="pbRemainingTime"
@@ -179,44 +182,52 @@
             Foreground="White"
             RenderTransformOrigin="0.566,-0.694" />
         <Button
-                x:Name="btnOpt1"
-                Style="{StaticResource left}"
-                Width="380"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content=""
-                HorizontalContentAlignment="Left"
-                IsEnabled="False" Click="btnOpt1_Click" Margin="355,147,0,0" />
+            x:Name="btnOpt1"
+            Width="380"
+            Height="30"
+            Margin="355,147,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Left"
+            Click="btnOpt1_Click"
+            Content=""
+            IsEnabled="False"
+            Style="{StaticResource left}" />
         <Button
-                x:Name="btnOpt2"
-                Style="{StaticResource left}"
-                Width="380"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content=""
-                HorizontalContentAlignment="Left"
-                IsEnabled="False" Click="btnOpt2_Click" Margin="355,187,0,0" />
+            x:Name="btnOpt2"
+            Width="380"
+            Height="30"
+            Margin="355,187,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Left"
+            Click="btnOpt2_Click"
+            Content=""
+            IsEnabled="False"
+            Style="{StaticResource left}" />
         <Button
-                x:Name="btnOpt3"
-                Style="{StaticResource left}"
-                Width="380"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content=""
-                HorizontalContentAlignment="Left"
-                IsEnabled="False" Click="btnOpt3_Click" Margin="355,227,0,0" />
+            x:Name="btnOpt3"
+            Width="380"
+            Height="30"
+            Margin="355,227,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Left"
+            Click="btnOpt3_Click"
+            Content=""
+            IsEnabled="False"
+            Style="{StaticResource left}" />
         <Button
-                x:Name="btnOpt4"
-                Style="{StaticResource left}"
-                Width="380"
-                Height="30"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content=""
-                HorizontalContentAlignment="Left"
-                IsEnabled="False" Click="btnOpt4_Click" Margin="355,267,0,0" />
+            x:Name="btnOpt4"
+            Width="380"
+            Height="30"
+            Margin="355,267,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Left"
+            Click="btnOpt4_Click"
+            Content=""
+            IsEnabled="False"
+            Style="{StaticResource left}" />
     </Grid>
 </Page>

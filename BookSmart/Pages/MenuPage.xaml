@@ -73,7 +73,7 @@
             Margin="5,0,10,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom"
-            Content="© Jishen Harilal | version 19.11.2023"
+            Content="© Jishen Harilal | version 20.11.2023"
             FontSize="10"
             FontWeight="SemiBold"
             Foreground="Gray" />
