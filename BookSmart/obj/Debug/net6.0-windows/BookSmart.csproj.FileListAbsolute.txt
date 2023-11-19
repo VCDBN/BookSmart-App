@@ -27,3 +27,5 @@ C:\Users\USER\source\repos\BookSmart\BookSmart\obj\Debug\net6.0-windows\Pages\Re
 C:\Users\USER\source\repos\BookSmart\BookSmart\bin\Debug\net6.0-windows\GongSolutions.WPF.DragDrop.dll
 C:\Users\USER\source\repos\BookSmart\BookSmart\obj\Debug\net6.0-windows\Pages\IdentifyingAreasPage.g.cs
 C:\Users\USER\source\repos\BookSmart\BookSmart\obj\Debug\net6.0-windows\Pages\IdentifyingAreasPage.baml
+C:\Users\USER\source\repos\BookSmart\BookSmart\obj\Debug\net6.0-windows\Pages\FindingCallNumbersPage.baml
+C:\Users\USER\source\repos\BookSmart\BookSmart\obj\Debug\net6.0-windows\Pages\FindingCallNumbersPage.g.cs
