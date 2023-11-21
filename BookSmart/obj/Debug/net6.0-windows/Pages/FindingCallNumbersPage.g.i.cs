@@ -164,7 +164,7 @@ namespace BookSmart.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BookSmart;V1.0.0.0;component/pages/findingcallnumberspage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BookSmart;component/pages/findingcallnumberspage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\FindingCallNumbersPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
